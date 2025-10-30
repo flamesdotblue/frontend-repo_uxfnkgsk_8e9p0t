@@ -9,22 +9,21 @@ function MiniStat({ icon: Icon, label, value, delta, color }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-120px' }}
       transition={{ duration: 0.4 }}
-      className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4"
+      className="rounded-2xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-xl p-4"
     >
       <div className="flex items-center justify-between">
-        <div className={`size-8 rounded-lg grid place-items-center ${color} text-white`}>
+        <div className={`size-8 rounded-xl grid place-items-center text-white ${color}`}>
           <Icon className="size-4" />
         </div>
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">{delta}</span>
+        <span className="text-xs text-zinc-600 dark:text-zinc-300">{delta}</span>
       </div>
       <div className="mt-4 text-2xl font-semibold text-zinc-900 dark:text-white">{value}</div>
-      <div className="text-xs text-zinc-500 dark:text-zinc-400">{label}</div>
+      <div className="text-xs text-zinc-600 dark:text-zinc-300">{label}</div>
     </motion.div>
   );
 }
 
 function LineChart() {
-  // simple decorative sparkline-like chart using SVG
   const points = [5, 14, 9, 18, 13, 22, 26, 19, 28, 32, 27, 36];
   const width = 520;
   const height = 160;
@@ -41,15 +40,15 @@ function LineChart() {
     <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-40">
       <defs>
         <linearGradient id="grad" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0%" stopColor="#22d3ee" />
+          <stop offset="0%" stopColor="#38bdf8" />
           <stop offset="50%" stopColor="#a78bfa" />
           <stop offset="100%" stopColor="#fb7185" />
         </linearGradient>
       </defs>
       <path d={path} fill="none" stroke="url(#grad)" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
       <linearGradient id="area" x1="0" x2="0" y1="0" y2="1">
-        <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.22" />
-        <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+        <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.18" />
+        <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
       </linearGradient>
       <path d={`${path} L ${width} ${height} L 0 ${height} Z`} fill="url(#area)" opacity="0.2" />
     </svg>
@@ -65,20 +64,20 @@ export default function DashboardPreview() {
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white">A dashboard that feels alive</h2>
             <p className="mt-2 text-zinc-600 dark:text-zinc-300 max-w-2xl">Real-time insights across retail and experiences: sales, views, engagement, and conversion trends — visualized beautifully.</p>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-300">
+          <div className="hidden md:flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300">
             <BarChart3 className="size-4" />
             Live metrics
           </div>
         </div>
 
         <div className="mt-8 grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6">
+          <div className="lg:col-span-2 rounded-3xl border border-white/40 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-2xl p-6 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.25)]">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-zinc-600 dark:text-zinc-400">Revenue (Last 30 days)</div>
+                <div className="text-sm text-zinc-600 dark:text-zinc-300">Revenue (Last 30 days)</div>
                 <div className="text-3xl font-semibold text-zinc-900 dark:text-white">$82,940</div>
               </div>
-              <div className="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 dark:bg-emerald-400/10 px-2.5 py-1 rounded-full text-xs">
+              <div className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-100/70 dark:text-emerald-300 dark:bg-emerald-400/10 px-2.5 py-1 rounded-full text-xs">
                 <TrendingUp className="size-4" /> 12.4%
               </div>
             </div>
